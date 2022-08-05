@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 80%;
+            margin: 2rem auto;
+            align-items: center;
+        }
+        input{
+            width: 4rem;
+            line-height: 3rem;
+            font-size: 2rem;
+        }
+        .input-container{
+            width: max-content;
+            margin: 1rem auto;
+        }
+        button{
+            width: 4.5rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            padding: 0;
+        }
+
+        .bar{
+            width: 90%;
+            border: 2px solid black;
+            height: 3rem;
+            border-radius: .5rem;
+            margin: 0 auto;
+        }
+
+        .fill{
+            height: 2.8rem;
+            margin: .1rem 0;
+            border-radius: .5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-container">
+            <input type="number" name="" id="percentage">
+            <br>
+            <button onclick="fill()">Submit</button>
+        </div>
+        <div class="bar">
+            <div class="fill" id="filldiv"></div>
+        </div>
+    </div>
+    <script>
+        let fillPercentage;
+        let i=0;
+        let fillDiv=document.getElementById('filldiv');
+        function fill(){
+            fillPercentage=document.getElementById('percentage').value;
+            filler(fillPercentage,i);
+        }
+        function filler(fillPercentage,i){
+            setTimeout(()=>{
+                if(i<=fillPercentage){
+                    i++;
+                    fillDiv.style.width=i+"%";
+
+                    if(i<20){
+                        fillDiv.style.backgroundColor='red';
+                    }
+                    else if(i>=20 && i<75){
+                        fillDiv.style.backgroundColor='yellow';
+                    }
+                    else{
+                        fillDiv.style.backgroundColor='green';
+                    }
+                    filler(fillPercentage,i);
+                }
+            },10);
+        }
+    </script>
+</body>
+</html>
